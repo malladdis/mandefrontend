@@ -1,0 +1,110 @@
+<nav class="navbar navbar-expand-md  fixed-top" style="background-color: #3c8dbc;">
+  <div class="container-fluid">
+
+    <button type="button" id="sidebarCollapse" class="btn btn-flat bg-transparent" (click)="toggle()">
+      <i class="fa fa-bars text-white"></i>
+    </button>
+
+  </div>
+</nav>
+<div class="wrapper">
+  <!-- Sidebar -->
+  <nav id="sidebar" [ngClass]="{'dragged': active}">
+    <div class="sidebar-header">
+      <img src="../../assets/images/blog-3.jpg" alt="" class="sidebar-profile-img">
+    </div>
+
+    <ul class="list-unstyled components">
+      <li>
+        <a routerLink="/admin/dashboard">
+          <i class="white-text fa fa-dashboard"></i>&nbsp;
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="#tracking" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <i class="white-text fa fa-bar-chart"></i>&nbsp;Tracking</a>
+        <ul class="collapse list-unstyled" id="tracking">
+          <li>
+            <a href="#">Activity</a>
+          </li>
+          <li>
+            <a href="#">Financial</a>
+          </li>
+          <li>
+            <a href="#">Programme Result</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#master" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <i class="white-text fa fa-magic"></i>&nbsp;Master Modules</a>
+        <ul class="collapse list-unstyled" id="master">
+          <li>
+            <a routerLink="admin/programs">Programme</a>
+          </li>
+          <li>
+            <a routerLink="admin/projects">Project</a>
+          </li>
+          <li>
+            <a routerLink="admin/outcomes">Outcome</a>
+          </li>
+          <li>
+            <a routerLink="admin/outputs">Output</a>
+          </li>
+          <li>
+            <a routerLink="admin/activities">Activity</a>
+          </li>
+          <li>
+            <a routerLink="admin/inputs">Input</a>
+          </li>
+          <li>
+            <a href="#">Beneficiaries</a>
+          </li>
+          <li>
+            <a href="#">Financial</a>
+          </li>
+          <li>
+            <a href="#">Donor</a>
+          </li>
+          <li>
+            <a href="#">Location</a>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#data" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> <i class="white-text fa fa-book"></i>&nbsp;Data Entry</a>
+        <ul class="collapse list-unstyled" id="data">
+          <li>
+            <a href="#">Individual Beneficiary</a>
+          </li>
+          <li>
+            <a href="#">Group Beneficiary</a>
+          </li>
+          <li>
+            <a href="#">Activities</a>
+          </li>
+          <li>
+            <a href="#">Budget</a>
+          </li>
+          <li>
+            <a href="#">Activities Expenditures</a>
+          </li>
+          <li>
+            <a href="#">Admin Expenditures</a>
+          </li>
+          <li>
+            <a href="#">Intervention Input</a>
+          </li>
+          <li>
+            <a href="#">and others</a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </nav>
+  <main style="margin-top: 3.5em; ">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
