@@ -12,24 +12,28 @@ import {TokenService} from '../token.service';
 })
 export class DynamicComponent implements OnInit {
   @ViewChild(DynamicDirective) dynamic: DynamicDirective;
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private appservice: TokenService) { }
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private appservice: AuthService) { }
 
   ngOnInit() {
     this.loadComponent();
   }
   loadComponent() {
-    if (this.appservice.loggedIn()) {
-      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(SidenavComponent);
+    this.appservice.authStatus.subscribe(data => {
+      if (data) {
+        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(SidenavComponent);
 
-      const viewContainerRef = this.dynamic.viewContainerRef;
-      viewContainerRef.clear();
-      const componentRef = viewContainerRef.createComponent(componentFactory);
-    } else {
-      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(HomeComponent);
+        const viewContainerRef = this.dynamic.viewContainerRef;
+        viewContainerRef.clear();
+        const componentRef = viewContainerRef.createComponent(componentFactory);
+      } else {
+        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(HomeComponent);
 
-      const viewContainerRef = this.dynamic.viewContainerRef;
-      viewContainerRef.clear();
-      const componentRef = viewContainerRef.createComponent(componentFactory);
-    }
+        const viewContainerRef = this.dynamic.viewContainerRef;
+        viewContainerRef.clear();
+        const componentRef = viewContainerRef.createComponent(componentFactory);
+      }
+    }, err => {
+      console.log(err);
+    });
   }
 }

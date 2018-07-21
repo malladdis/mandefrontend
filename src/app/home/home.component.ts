@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
   }
   handleError(error) {
     this.error = error.error.error;
+    console.log(error);
   }
   handleResponse(data) {
     this.token.handle(data.token);

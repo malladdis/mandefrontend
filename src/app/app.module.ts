@@ -25,6 +25,8 @@ import { ProjectComponent } from './project/project.component';
 import { OutcomeComponent } from './outcome/outcome.component';
 import { OutputComponent } from './output/output.component';
 import { InputComponent } from './input/input.component';
+import {BeforeLoginService} from './before-login.service';
+import {AfterLoginService} from './after-login.service';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -61,7 +63,7 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [AuthService, AppService, TokenService],
+  providers: [AuthService, AppService, TokenService, BeforeLoginService, AfterLoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
